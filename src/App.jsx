@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+// eslint-disable-next-line no-unused-vars
 import styled from "styled-components";
 import { DelayInput } from "react-delay-input";
 import { useState } from "react";
@@ -33,7 +34,7 @@ function App() {
             <Form>
               <FormGroup>
                 <Col>
-                  <Form.Label htmlFor="todoInput">Hedef</Form.Label>
+                  <Form.Label htmlFor="todoInput">Target</Form.Label>
                 </Col>
                 <Col className="d-flex justify-content-between">
                   <DelayInput
