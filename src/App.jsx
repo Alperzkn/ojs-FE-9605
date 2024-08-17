@@ -1,35 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import styled from "styled-components";
+import { DelayInput } from "react-delay-input";
+import { useState } from "react";
+import { Col, Container, Form, Row, Button, FormGroup } from "react-bootstrap";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todoInput, setTodoInput] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  function addTodo() {
+    event.preventDefault();
+    setTodos([todoInput, ...todos]);
+    setTodoInput("");
+  }
+
+  console.log(todos);
+
+  const deleteByIndex = (index) => {
+    setTodos((oldValues) => {
+      return oldValues.filter((_, i) => i !== index);
+    });
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Container>
+        <Row className="pt-5">
+          <h1>ToDo App</h1>
+        </Row>
+        <Row>
+          <Col>
+            <Form>
+              <FormGroup>
+                <Col>
+                  <Form.Label htmlFor="todoInput">Hedef</Form.Label>
+                </Col>
+                <Col className="d-flex justify-content-between">
+                  <DelayInput
+                    className=""
+                    id="todoInput"
+                    value={todoInput}
+                    delayTimeout={300}
+                    onChange={(e) => setTodoInput(e.target.value)}
+                  />
+                  <Button onClick={addTodo} type="submit" variant="primary">
+                    Add
+                  </Button>
+                </Col>
+              </FormGroup>
+            </Form>
+          </Col>
+          <Col>
+            <ul>
+              {todos.map((todoInput, index) => (
+                <li key={index} className="justify-content-between d-flex">
+                  {todoInput}
+                  <Button
+                  variant="danger"
+                    className="mb-2 ms-2"
+                    onClick={() => deleteByIndex(index)}
+                  >
+                    Delete
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </Col>
+        </Row>
+      </Container>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
