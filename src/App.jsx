@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-//import { useState } from "react";
-// eslint-disable-next-line no-unused-vars
-import { Button, Form } from "react-bootstrap";
-import { ToDoList } from "./ToDoList";
-
-function App() {
- // const [todoInput, setTodoInput] = useState("");
- // const [todos, setTodos] = useState(["Elma al", "Resim çiz"]);
-
-  return (
-    <>
-      <h1>ToDo App</h1>
-      <ToDoList/>
-=======
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import { DelayInput } from "react-delay-input";
@@ -83,7 +68,6 @@ function App() {
           </Col>
         </Row>
       </Container>
->>>>>>> 68c84cdf07d14099e363f3a294f632ef58527c55
     </>
   );
 }
